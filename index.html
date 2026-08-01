@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Bebi ❤️</title>
+    <title>For My Bebi Liann❤️</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -13,9 +13,28 @@
 
 <body>
 <div id="hearts"></div>
+
+    <div class="side-column left">
+        <div class="side-image">
+            <img src="images/side1.jpg" alt="Side photo 1">
+        </div>
+        <div class="side-image">
+            <img src="images/side3.jpg" alt="Side photo 3">
+        </div>
+    </div>
+
+    <div class="side-column right">
+        <div class="side-image">
+            <img src="images/side2.jpg" alt="Side photo 2">
+        </div>
+        <div class="side-image">
+            <img src="images/side4.jpg" alt="Side photo 4">
+        </div>
+    </div>
+
     <div class="container" id="homeScreen">
 
-        <h1>For My Bebi ❤️</h1>
+        <h1>For My Bebi Liann❤️</h1>
 
         <p>
             Hi bebi.
@@ -24,6 +43,7 @@
             I made this little place for you.
             Whenever you're feeling something,
             come back here and let me keep you company.
+        
         </p>
 
         <button id="startButton">
@@ -31,11 +51,13 @@
         </button>
          </p>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
     <source src="music/song1.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicButton">🎵 Play Music</button>
+<button id="musicButton">🎵 Play Music
+    (guess what song this is)
+</button>
     </div>
 
     <script src="script.js" defer></script>
@@ -44,16 +66,71 @@
 
     <h1>Choose One ❤️</h1>
 
-    <button class="menuButton">Open when you miss me</button><br>
+    <button id="missMeButton" class="menuButton">Open when you miss me</button><br>
 
-    <button class="menuButton">Open when you're sad</button><br>
+    <button id="favePicButton" class="menuButton">This is my fave picture of us, bebi</button><br>
 
-    <button class="menuButton">Open when you want to laugh</button><br>
+    <button id="notMadButton" class="menuButton">Open when you think I'm mad at you</button><br>
 
-    <button class="menuButton">Open when you can't sleep</button><br>
+      <button id="backButton" class="menuButton">Back</button>
 
-    <button class="menuButton">Open when you need motivation</button><br>
-     <button id="backButton" class="menuButton">Back</button>
+</div>
+
+    <div class="container hidden" id="missMeScreen" style="display:none;">
+
+    <h1>To My Bebi ❤️</h1>
+
+    <div class="letter-box">
+        <p>
+      Hi bebi. If you're reading this, I'm guessing you miss me a little... or maybe a lot. Truth is, I probably miss you just as much, if not more beb AAAAAA. I wish I could be there to hug you, hold your hand, or just sit beside you without saying anything. I know long distance isn't always easy, but every day that passes is one day closer to the next time we see each other. Thank you for staying, for loving me, and for choosing us even when we're apart. Whenever you miss me, just remember that somewhere I'm probably thinking about you too, wondering what you're doing, hoping you're okay, and smiling because I get to call you mine. I love you so much, bebi. We'll make more memories together soon, and when that day comes, I'll make up for all the hugs and kisses we couldn't give each other.
+    </div>
+
+    <audio id="bgMusic2" loop preload="auto">
+        <source src="music/song2.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="playSong2Button">🎵 Play ze music</button>
+    <button id="missMeBackButton" class="menuButton">Back</button>
+
+</div>
+
+    <div class="container hidden" id="faveScreen" style="display:none;">
+
+    <h1>My Fave Picture</h1>
+
+    <div class="fave-image-box">
+        <img src="images/fave1.jpg" alt="Favorite picture of us">
+    </div>
+
+    <audio id="bgMusic3" loop preload="auto">
+        <source src="music/song3.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="faveBackButton" class="menuButton">Back</button>
+
+</div>
+
+    <div class="container hidden" id="notMadScreen" style="display:none;">
+
+    <h1>Not Mad, Only Love</h1>
+
+    <div class="fave-image-box">
+        <img src="images/chad1.jpg" alt="Not mad picture">
+    </div>
+
+    <div class="letter-box">
+        <p>
+            Why would you think that I’ll be mad at you? I would never be mad at you, bebi.
+            <br><br>
+            I love you too much to stay upset. You are my favorite person and I want you to always feel safe and loved.
+        </p>
+    </div>
+
+    <audio id="bgMusic4" loop preload="auto">
+        <source src="music/song4.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="notMadBackButton" class="menuButton">Back</button>
 
 </div>
 </body>

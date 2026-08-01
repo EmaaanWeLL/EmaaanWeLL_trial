@@ -2,13 +2,19 @@ const music = document.getElementById("bgMusic");
 const musicButton = document.getElementById("musicButton");
 
 if (musicButton) {
-    musicButton.addEventListener("click", () => {
-        if (music.paused) {
-            music.play();
-            musicButton.textContent = "⏸ Pause Music";
-        } else {
-            music.pause();
-            musicButton.textContent = "🎵 Play Music";
+    musicButton.addEventListener("click", async () => {
+        try {
+            if (music.paused) {
+                music.load();
+                await music.play();
+                musicButton.textContent = "⏸ Pause Music";
+            } else {
+                music.pause();
+                musicButton.textContent = "🎵 Play Music (guess what song this is)";
+            }
+        } catch (error) {
+            console.error("Audio could not be played:", error);
+            musicButton.textContent = "🎵 Play Music (guess what song this is)";
         }
     });
 }
@@ -56,6 +62,19 @@ setInterval(createHeart,500);
 const startButton = document.getElementById("startButton");
 const homeScreen = document.getElementById("homeScreen");
 const menuScreen = document.getElementById("menuScreen");
+const missMeButton = document.getElementById("missMeButton");
+const favePicButton = document.getElementById("favePicButton");
+const notMadButton = document.getElementById("notMadButton");
+const missMeScreen = document.getElementById("missMeScreen");
+const faveScreen = document.getElementById("faveScreen");
+const notMadScreen = document.getElementById("notMadScreen");
+const missMeBackButton = document.getElementById("missMeBackButton");
+const faveBackButton = document.getElementById("faveBackButton");
+const notMadBackButton = document.getElementById("notMadBackButton");
+const bgMusic2 = document.getElementById("bgMusic2");
+const bgMusic3 = document.getElementById("bgMusic3");
+const bgMusic4 = document.getElementById("bgMusic4");
+const playSong2Button = document.getElementById("playSong2Button");
 
 function switchScreen(showScreen, hideScreen) {
     if (!showScreen || !hideScreen) return;
@@ -80,5 +99,105 @@ const backButton = document.getElementById("backButton");
 if (backButton) {
     backButton.addEventListener("click", () => {
         switchScreen(homeScreen, menuScreen);
+    });
+}
+
+if (missMeButton) {
+    missMeButton.addEventListener("click", () => {
+        if (music && !music.paused) {
+            music.pause();
+            musicButton.textContent = "🎵 Play Music (guess what song this is)";
+        }
+        switchScreen(missMeScreen, menuScreen);
+    });
+}
+
+if (favePicButton) {
+    favePicButton.addEventListener("click", async () => {
+        if (music && !music.paused) {
+            music.pause();
+            musicButton.textContent = "🎵 Play Music (guess what song this is)";
+        }
+        if (bgMusic2 && !bgMusic2.paused) {
+            bgMusic2.pause();
+            playSong2Button.textContent = "🎵 Play ze Song";
+        }
+        if (bgMusic3) {
+            try {
+                await bgMusic3.play();
+            } catch (error) {
+                console.error("Favorite picture song could not be played:", error);
+            }
+        }
+        switchScreen(faveScreen, menuScreen);
+    });
+}
+
+if (notMadButton) {
+    notMadButton.addEventListener("click", async () => {
+        if (music && !music.paused) {
+            music.pause();
+            musicButton.textContent = "🎵 Play Music (guess what song this is)";
+        }
+        if (bgMusic2 && !bgMusic2.paused) {
+            bgMusic2.pause();
+            playSong2Button.textContent = "🎵 Play ze Song";
+        }
+        if (bgMusic3 && !bgMusic3.paused) {
+            bgMusic3.pause();
+        }
+        if (bgMusic4) {
+            try {
+                await bgMusic4.play();
+            } catch (error) {
+                console.error("song4 could not be played:", error);
+            }
+        }
+        switchScreen(notMadScreen, menuScreen);
+    });
+}
+
+if (missMeBackButton) {
+    missMeBackButton.addEventListener("click", () => {
+        if (bgMusic2 && !bgMusic2.paused) {
+            bgMusic2.pause();
+            playSong2Button.textContent = "🎵 Play Song 2";
+        }
+        switchScreen(menuScreen, missMeScreen);
+    });
+}
+
+if (faveBackButton) {
+    faveBackButton.addEventListener("click", () => {
+        if (bgMusic3 && !bgMusic3.paused) {
+            bgMusic3.pause();
+        }
+        switchScreen(menuScreen, faveScreen);
+    });
+}
+
+if (notMadBackButton) {
+    notMadBackButton.addEventListener("click", () => {
+        if (bgMusic4 && !bgMusic4.paused) {
+            bgMusic4.pause();
+        }
+        switchScreen(menuScreen, notMadScreen);
+    });
+}
+
+if (playSong2Button && bgMusic2) {
+    playSong2Button.addEventListener("click", async () => {
+        try {
+            if (bgMusic2.paused) {
+                await bgMusic2.play();
+                playSong2Button.textContent = "⏸ Pause ze Song";
+            } else {
+                bgMusic2.pause();
+                playSong2Button.textContent = "🎵 Play ze Song";
+            }
+        } catch (error) {
+            console.error("Song 2 could not be played:", error);
+            playSong2Button.textContent = "🎵 Play ze Song";
+        }
     });
 }
