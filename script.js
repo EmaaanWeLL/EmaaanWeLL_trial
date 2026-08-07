@@ -29,9 +29,10 @@ function createHeart(){
     let size = 18 + Math.random() * 24;
     if (makeFlower) {
         const imageIndex = Math.floor(Math.random() * 3) + 1;
-        el.src = `images/flower${imageIndex}.png`;
+        el.src = `./images/flower${imageIndex}.png`;
         el.alt = "floating flower";
         el.classList.add('float-flower');
+        el.crossOrigin = "anonymous";
         size = size * 4; // make flowers 100% bigger
         el.style.width = size + "px";
     } else {
