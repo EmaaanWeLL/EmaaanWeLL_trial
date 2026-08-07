@@ -23,24 +23,33 @@ const hearts = document.getElementById("hearts");
 
 function createHeart(){
 
-    // randomly create either a heart emoji or a floating "3rd" text
-    const el = document.createElement("div");
-    const makeThird = Math.random() < 0.30; // ~30% chance to show "3rd"
+    const makeFlower = Math.random() < 0.50; // ~50% chance to use a floating flower
+    const el = makeFlower ? document.createElement("img") : document.createElement("div");
 
-    if (makeThird) {
-        el.textContent = "3rd";
-        el.classList.add('float-3rd');
+    let size = 18 + Math.random() * 24;
+    if (makeFlower) {
+        const imageIndex = Math.floor(Math.random() * 3) + 1;
+        el.src = `images/flower${imageIndex}.png`;
+        el.alt = "floating flower";
+        el.classList.add('float-flower');
+        size = size * 4; // make flowers 100% bigger
+        el.style.width = size + "px";
     } else {
-        el.innerHTML = "❤️";
-        el.classList.add('float-heart');
+        const makeThird = Math.random() < 0.12; // smaller chance for the 3rd text
+        if (makeThird) {
+            el.textContent = "3rd";
+            el.classList.add('float-3rd');
+        } else {
+            el.innerHTML = "❤️";
+            el.classList.add('float-heart');
+        }
     }
 
     el.style.position = "absolute";
     el.style.left = (5 + Math.random() * 90) + "vw";
     el.style.top = "100vh";
-    const size = 14 + Math.random() * 30;
     el.style.fontSize = size + "px";
-    el.style.opacity = 0.85;
+    el.style.opacity = 0.9;
     el.style.transition = "transform 6s linear, opacity 6s linear";
 
     hearts.appendChild(el);

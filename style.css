@@ -231,3 +231,10 @@ transform:translateY(0);
     display:inline-block;
     text-shadow:0 6px 18px rgba(255,79,139,0.12);
 }
+.float-flower{
+    width:80px;
+    height:auto;
+    pointer-events:none;
+    display:block;
+    filter:drop-shadow(0 12px 20px rgba(255,105,180,0.18));
+}
