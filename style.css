@@ -216,3 +216,18 @@ transform:translateY(0);
 }
 
 }
+
+/* floating '3rd' text styles */
+.float-3rd{
+    color:#ff2a7a;
+    background:linear-gradient(90deg,#ffd6e7,#ffb6d9);
+    padding:6px 12px;
+    border-radius:14px;
+    font-weight:700;
+    box-shadow:0 12px 30px rgba(255,79,139,0.15);
+    display:inline-block;
+}
+.float-heart{
+    display:inline-block;
+    text-shadow:0 6px 18px rgba(255,79,139,0.12);
+}

@@ -23,37 +23,36 @@ const hearts = document.getElementById("hearts");
 
 function createHeart(){
 
-    const heart = document.createElement("div");
+    // randomly create either a heart emoji or a floating "3rd" text
+    const el = document.createElement("div");
+    const makeThird = Math.random() < 0.30; // ~30% chance to show "3rd"
 
-    heart.innerHTML="❤️";
+    if (makeThird) {
+        el.textContent = "3rd";
+        el.classList.add('float-3rd');
+    } else {
+        el.innerHTML = "❤️";
+        el.classList.add('float-heart');
+    }
 
-    heart.style.position="absolute";
+    el.style.position = "absolute";
+    el.style.left = (5 + Math.random() * 90) + "vw";
+    el.style.top = "100vh";
+    const size = 14 + Math.random() * 30;
+    el.style.fontSize = size + "px";
+    el.style.opacity = 0.85;
+    el.style.transition = "transform 6s linear, opacity 6s linear";
 
-    heart.style.left=Math.random()*100+"vw";
+    hearts.appendChild(el);
 
-    heart.style.top="100vh";
+    setTimeout(() => {
+        el.style.transform = "translateY(-120vh)";
+        el.style.opacity = 0;
+    }, 100);
 
-    heart.style.fontSize=(15+Math.random()*20)+"px";
-
-    heart.style.opacity=.6;
-
-    heart.style.transition="transform 6s linear, opacity 6s linear";
-
-    hearts.appendChild(heart);
-
-    setTimeout(()=>{
-
-        heart.style.transform="translateY(-120vh)";
-
-        heart.style.opacity=0;
-
-    },100);
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },6000);
+    setTimeout(() => {
+        el.remove();
+    }, 6000);
 
 }
 
