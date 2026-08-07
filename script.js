@@ -65,19 +65,33 @@ const menuScreen = document.getElementById("menuScreen");
 const missMeButton = document.getElementById("missMeButton");
 const favePicButton = document.getElementById("favePicButton");
 const notMadButton = document.getElementById("notMadButton");
+const monthsButton = document.getElementById("monthsButton");
 const missMeScreen = document.getElementById("missMeScreen");
 const faveScreen = document.getElementById("faveScreen");
 const notMadScreen = document.getElementById("notMadScreen");
+const monthsScreen = document.getElementById("monthsScreen");
 const missMeBackButton = document.getElementById("missMeBackButton");
 const faveBackButton = document.getElementById("faveBackButton");
 const notMadBackButton = document.getElementById("notMadBackButton");
 const bgMusic2 = document.getElementById("bgMusic2");
 const bgMusic3 = document.getElementById("bgMusic3");
+const bgMusicMonths = document.getElementById("bgMusicMonths");
 const bgMusic4 = document.getElementById("bgMusic4");
 const playSong2Button = document.getElementById("playSong2Button");
+const playMonthsButton = document.getElementById("playMonthsButton");
+const monthsBackButton = document.getElementById("monthsBackButton");
+const monthsMessageDisplay = document.getElementById("monthsMessageDisplay");
 
 function switchScreen(showScreen, hideScreen) {
     if (!showScreen || !hideScreen) return;
+
+    // ensure shown screen is on top
+    try {
+        showScreen.style.zIndex = 5;
+    } catch (e) {}
+    try {
+        hideScreen.style.zIndex = 1;
+    } catch (e) {}
 
     showScreen.style.display = "block";
     showScreen.classList.remove("hidden");
@@ -201,3 +215,48 @@ if (playSong2Button && bgMusic2) {
         }
     });
 }
+
+if (monthsButton) {
+    monthsButton.addEventListener("click", () => {
+        console.log('monthsButton clicked');
+        if (music && !music.paused) {
+            music.pause();
+            musicButton.textContent = "🎵 Play Music (guess what song this is)";
+        }
+        if (bgMusic2 && !bgMusic2.paused) {
+            bgMusic2.pause();
+            playSong2Button.textContent = "🎵 Play ze Song";
+        }
+        // no audio autoplay for months button — only show message and switch screen
+        if (monthsMessageDisplay) monthsMessageDisplay.textContent = "Made this while we're talking HAHAHAHA. I love you";
+        switchScreen(monthsScreen, menuScreen);
+    });
+}
+
+// delegated fallback removed — monthsButton now uses the same handler style as other buttons
+
+if (playMonthsButton && bgMusicMonths) {
+    playMonthsButton.addEventListener("click", async () => {
+        try {
+            if (bgMusicMonths.paused) {
+                await bgMusicMonths.play();
+                playMonthsButton.textContent = "⏸ Pause";
+            } else {
+                bgMusicMonths.pause();
+                playMonthsButton.textContent = "🎵 Play";
+            }
+        } catch (error) {
+            console.error("Months song could not be played:", error);
+            playMonthsButton.textContent = "🎵 Play Months Song";
+        }
+    });
+}
+
+if (monthsBackButton) {
+    monthsBackButton.addEventListener("click", () => {
+        if (bgMusicMonths && !bgMusicMonths.paused) bgMusicMonths.pause();
+        switchScreen(menuScreen, monthsScreen);
+    });
+}
+
+// No editable message box — months message is set when opening the months screen.

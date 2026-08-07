@@ -151,6 +151,24 @@ p{
     box-shadow:0 25px 50px rgba(0,0,0,.15);
 }
 
+.months-image-box{ 
+    display:flex;
+    justify-content:center;
+    margin:12px auto 18px;
+    max-width:360px;
+}
+.months-image-box img{
+    width:100%;
+    max-height:300px;
+    border-radius:20px;
+}
+.months-saved-message{
+    margin-top:10px;
+    font-style:italic;
+    color:#333;
+    white-space:pre-wrap;
+}
+
 button{
 
     margin-top:35px;
