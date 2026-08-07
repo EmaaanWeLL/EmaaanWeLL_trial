@@ -35,7 +35,7 @@ function createHeart(){
         size = size * 4; // make flowers 100% bigger
         el.style.width = size + "px";
     } else {
-        const makeThird = Math.random() < 0.12; // smaller chance for the 3rd text
+        const makeThird = Math.random() < 0.30; // smaller chance for the 3rd text
         if (makeThird) {
             el.textContent = "3rd";
             el.classList.add('float-3rd');
